@@ -1,0 +1,23 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("DB_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+enum Subjects {
+    MATHEMATICS
+    SCIENCE
+    HISTORY
+    LITERATURE
+}
+
+model Student {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    firstName String
+    lastName  String
+    email     String
+    className Subjects
+}
